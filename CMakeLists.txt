@@ -46,6 +46,10 @@ else(PCRE2_FOUND)
   message(SEND_ERROR "Cannot find pcre2 libraries. Terminating.")
 endif(PCRE2_FOUND)
 
+if(PCRE2_IS_STATIC)
+  add_compile_definitions(PCRE2_STATIC)
+endif(PCRE2_IS_STATIC)
+
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/src)
 message("Added subdirectory ${CMAKE_CURRENT_SOURCE_DIR}/src")
 if(SSPLIT_USE_INTERNAL_PCRE2)

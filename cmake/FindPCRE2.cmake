@@ -6,6 +6,7 @@
 # PCRE2_FOUND - System has the PCRE library
 # PCRE2_LIBRARIES - The PCRE library file
 # PCRE2_INCLUDE_DIRS - The folder with the PCRE headers
+# PCRE2_IS_STATIC - Whether PCRE2 is compiled as a static library
 
 if(SSPLIT_USE_INTERNAL_PCRE2)
   include(ExternalProject)
@@ -55,7 +56,8 @@ if(SSPLIT_USE_INTERNAL_PCRE2)
   set(PCRE2_LIBRARIES ${CMAKE_BINARY_DIR}/${CMAKE_INSTALL_LIBDIR}/${CMAKE_STATIC_LIBRARY_PREFIX}${PCRE2_STATIC_LIBRARY_NAME}${CMAKE_STATIC_LIBRARY_SUFFIX})
   set(PCRE2_INCLUDE_DIRS "${CMAKE_BINARY_DIR}/include")
   set(PCRE2_FOUND TRUE CACHE BOOL "Found PCRE2 libraries" FORCE)
-  
+  set(PCRE2_IS_STATIC TRUE)
+
   # download, configure, compile
   ExternalProject_Add(pcre2
     PREFIX ${CMAKE_BINARY_DIR}/pcre2
